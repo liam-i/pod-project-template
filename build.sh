@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 echo "执行的脚本名：$0"
 
@@ -85,9 +85,9 @@ function build_framework() {
                        BUILD_LIBRARY_FOR_DISTRIBUTION=YES \
                        MACH_O_TYPE=${machOType} || exit 1
 
-    xcodebuild -create-xcframework
-               -framework "${archiveiOSPath}/Products/Library/Frameworks/${schemeName}.framework"
-               -framework "${archiveSimulatorPath}/Products/Library/Frameworks/${schemeName}.framework"
+    xcodebuild -create-xcframework \
+               -framework "${archiveiOSPath}/Products/Library/Frameworks/${schemeName}.framework" \
+               -framework "${archiveSimulatorPath}/Products/Library/Frameworks/${schemeName}.framework" \
                -output "${buildout}/${schemeName}.xcframework" || exit 1
 
     echo "\033[32m 🟢🟢🟢 -> build ${machOType} ${schemeName}.xcframework succeeded. \033[0m" # 绿色
