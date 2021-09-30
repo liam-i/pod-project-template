@@ -109,9 +109,10 @@ module Pod
       puts "\nRunning " + "pod install".magenta + " on your new library."
       puts ""
 
-      Dir.chdir("Example") do
+      # liam-i
+#      Dir.chdir("Example") do
         system "pod install"
-      end
+#      end
 
       `git add #{pod_name}.xcodeproj/project.pbxproj`
       `git commit -m "Initial commit"`
