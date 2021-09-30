@@ -38,9 +38,16 @@ module Pod
 
     def add_podspec_metadata
       project_metadata_item = @project.root_object.main_group.children.select { |group| group.name == "Podspec Metadata" }.first
-      project_metadata_item.new_file "../" + @configurator.pod_name  + ".podspec"
-      project_metadata_item.new_file "../README.md"
-      project_metadata_item.new_file "../LICENSE"
+      project_metadata_item.new_file "./" + @configurator.pod_name  + ".podspec"
+      project_metadata_item.new_file "./README.md"
+      project_metadata_item.new_file "./LICENSE"
+      project_metadata_item.new_file "./build.sh"
+      project_metadata_item.new_file "./commit-git.sh"
+      project_metadata_item.new_file "./push-git.sh"
+      project_metadata_item.new_file "./install-norepoupdate-pods.sh"
+      project_metadata_item.new_file "./install-pods.sh"
+      project_metadata_item.new_file "./update-norepoupdate-pods.sh"
+      project_metadata_item.new_file "./update-pods.sh"
     end
 
     def remove_demo_project
