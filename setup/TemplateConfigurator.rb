@@ -102,7 +102,7 @@ module Pod
     #----------------------------------------#
 
     def ensure_carthage_compatibility
-      FileUtils.ln_s('Example/Pods/Pods.xcodeproj', '_Pods.xcodeproj')
+      FileUtils.ln_s('Pods/Pods.xcodeproj', '_Pods.xcodeproj')
     end
 
     def run_pod_install
@@ -113,7 +113,7 @@ module Pod
         system "pod install"
       end
 
-      `git add Example/#{pod_name}.xcodeproj/project.pbxproj`
+      `git add #{pod_name}.xcodeproj/project.pbxproj`
       `git commit -m "Initial commit"`
     end
 
@@ -155,7 +155,7 @@ module Pod
     end
 
     def customise_prefix
-      prefix_path = "Example/Tests/Tests-Prefix.pch"
+      prefix_path = "Tests/Tests-Prefix.pch"
       return unless File.exists? prefix_path
 
       pch = File.read prefix_path
@@ -165,7 +165,7 @@ module Pod
 
     def set_test_framework(test_type, extension, folder)
       content_path = "setup/test_examples/" + test_type + "." + extension
-      tests_path = "templates/" + folder + "/Example/Tests/Tests." + extension
+      tests_path = "templates/" + folder + "/Tests/Tests." + extension
       tests = File.read tests_path
       tests.gsub!("${TEST_EXAMPLE}", File.read(content_path) )
       File.open(tests_path, "w") { |file| file.puts tests }
@@ -221,7 +221,7 @@ module Pod
     end
 
     def podfile_path
-      'Example/Podfile'
+      'Podfile'
     end
 
     #----------------------------------------#

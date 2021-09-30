@@ -67,8 +67,8 @@ module Pod
       product.remove_from_project
 
       # Remove the actual folder + files for both projects
-      `rm -rf templates/ios/Example/PROJECT`
-      `rm -rf templates/swift/Example/PROJECT`
+      `rm -rf templates/ios/PROJECT`
+      `rm -rf templates/swift/PROJECT`
 
       # Replace the Podfile with a simpler one with only one target
       podfile_path = project_folder + "/Podfile"
