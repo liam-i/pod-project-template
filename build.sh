@@ -6,8 +6,8 @@ schemeName="${POD_NAME}"
 machOTypes=("mh_dylib")
 
 shDir=$(cd "$(dirname "$0")";pwd)
-buildout="${curPath}/build.out"
-podfilePath=shDir # 默认podfile和aggregate.sh文件在同一路径下
+buildout="${shDir}/build.out"
+podfilePath=${shDir} # 默认podfile和aggregate.sh文件在同一路径下
 
 function ask_macho_with_answers() {
     case $1 in
@@ -22,10 +22,10 @@ function ask_macho_with_answers() {
         ;;
     *)
         echo "\033[31m Unknown command: [$1]. \033[0m" # 红色
-        echo "\033[33m Please select the `Mach-O` to be compiled for framework \033[0m" # 黄色
+        echo "\033[33m Please select the Mach-O to be compiled for framework \033[0m" # 黄色
         echo "\033[33m       1. only dynamic framework \033[0m"
         echo "\033[33m       2. only static framework \033[0m"
-        echo "\033[31m       3. both dynamic and static framework \033[0m"
+        echo "\033[33m       3. both dynamic and static framework \033[0m"
 
         read -p "--> Please enter [1/2/3]: " _command;
         ask_macho_with_answers $_command;
@@ -63,13 +63,11 @@ function pod_install() {
 
 function build_framework() {
     machOType=$1
-    buildout="${buildout}/${machOType}"
-    archiveiOSPath="${buildout}/iphoneos.xcarchive"
-    archiveSimulatorPath="${buildout}/iphonesimulator.xcarchive"
+    buildoutPath="${buildout}/${machOType}"
+    archiveiOSPath="${buildoutPath}/iphoneos.xcarchive"
+    archiveSimulatorPath="${buildoutPath}/iphonesimulator.xcarchive"
 
     echo "\033[33m --> build ${machOType} ${schemeName}.xcframework... \033[0m" # 黄色
-
-    rm -rf ${buildout}
 
     xcodebuild archive -scheme ${schemeName} \
                        -sdk iphoneos \
@@ -88,12 +86,14 @@ function build_framework() {
     xcodebuild -create-xcframework \
                -framework "${archiveiOSPath}/Products/Library/Frameworks/${schemeName}.framework" \
                -framework "${archiveSimulatorPath}/Products/Library/Frameworks/${schemeName}.framework" \
-               -output "${buildout}/${schemeName}.xcframework" || exit 1
+               -output "${buildoutPath}/${schemeName}.xcframework" || exit 1
 
     echo "\033[32m 🟢🟢🟢 -> build ${machOType} ${schemeName}.xcframework succeeded. \033[0m" # 绿色
 }
 
 function build_frameworks() {
+    rm -rf ${buildout}
+
     for machOType in ${machOTypes[*]}
     do
         build_framework ${machOType}
