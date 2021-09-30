@@ -42,12 +42,9 @@ module Pod
       project_metadata_item.new_file "./README.md"
       project_metadata_item.new_file "./LICENSE"
       project_metadata_item.new_file "./build.sh"
-      project_metadata_item.new_file "./commit-git.sh"
       project_metadata_item.new_file "./push-git.sh"
-      project_metadata_item.new_file "./install-norepoupdate-pods.sh"
-      project_metadata_item.new_file "./install-pods.sh"
-      project_metadata_item.new_file "./update-norepoupdate-pods.sh"
-      project_metadata_item.new_file "./update-pods.sh"
+      project_metadata_item.new_file "./install-pod.sh"
+      project_metadata_item.new_file "./update-pod.sh"
     end
 
     def remove_demo_project
