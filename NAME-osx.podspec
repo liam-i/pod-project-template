@@ -30,14 +30,16 @@ TODO: Add long description of the pod here.
 
   s.platform = :osx
   s.osx.deployment_target = "10.10"
+  
+  s.swift_versions = ['5.0']
 
-  s.source_files = '${POD_NAME}/Sources/**/*'
+  s.source_files = 'Sources/Classes/**/*'
 
   # s.resource_bundles = {
-  #   '${POD_NAME}' => ['${POD_NAME}/Assets/*.png']
+  #   '${POD_NAME}' => ['Sources/Assets/*.png']
   # }
 
-  # s.public_header_files = 'Pod/Sources/**/*.h'
+  # s.public_header_files = 'Sources/Classes/**/*.h'
   # s.frameworks = 'Cocoa'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  # s.dependency 'Alamofire', '~> 5.4.4'
 end
