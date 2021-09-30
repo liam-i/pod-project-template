@@ -91,7 +91,7 @@ module Pod
       rename_template_files
       add_pods_to_podfile
       customise_prefix
-      rename_classes_folder
+#      rename_classes_folder # liam-i
       ensure_carthage_compatibility
       reinitialize_git_repo
       run_pod_install
@@ -175,13 +175,16 @@ module Pod
       FileUtils.mv "POD_README.md", "README.md"
       FileUtils.mv "POD_LICENSE", "LICENSE"
       FileUtils.mv "NAME.podspec", "#{pod_name}.podspec"
-#      FileUtils.mv "install-pods.sh", "install-pods.sh"
-#      FileUtils.mv "update-pods.sh", "update-pods.sh"
+
+      # liam-i
+#      FileUtils.mv "installpods.sh", "installpods.sh"
+#      FileUtils.mv "updatepods.sh", "updatepods.sh"
     end
 
-    def rename_classes_folder
-      FileUtils.mv "Pod", @pod_name
-    end
+    # liam-i
+#    def rename_classes_folder
+#      FileUtils.mv "Pod", @pod_name
+#    end
 
     def reinitialize_git_repo
       `rm -rf .git`
