@@ -5,10 +5,12 @@ echo "执行的脚本名：$0"
 function git_push() {
     msg=$1
 
-    #read -p "--> Please enter commit message (or press Enter to skip): " msg;
+    read -p "--> Please enter commit message (or press Enter to skip): " msg;
     if [ -z "$msg" ]; then
         msg="Minor Updates"
     fi
+
+    echo "\033[33m --> entered message: ${msg} \033[0m" # 黄色
 
     git add .
     git commit -m "${msg}"
