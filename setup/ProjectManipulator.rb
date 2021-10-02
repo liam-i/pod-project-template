@@ -79,7 +79,7 @@ module Pod
       podfile_text = <<-RUBY
 use_frameworks!
 target '#{test_target.name}' do
-  pod '#{@configurator.pod_name}', :path => '../'
+  pod '#{@configurator.pod_name}', :path => './'
   
   ${INCLUDED_PODS}
 end
