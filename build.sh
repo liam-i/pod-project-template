@@ -56,7 +56,7 @@ function pod_install() {
         echo "\033[31m 🔴🔴🔴 --> pod install failed. \033[0m" # 红色
         exit 1
     else
-        echo "\033[32m 🟢🟢🟢 -> pod install succeeded. \033[0m" # 绿色
+        echo "\033[32m 🟢🟢🟢 --> pod install succeeded. \033[0m" # 绿色
         cd ./Pods
     fi
 }
@@ -88,7 +88,7 @@ function build_framework() {
                -framework "${archiveSimulatorPath}/Products/Library/Frameworks/${schemeName}.framework" \
                -output "${buildoutPath}/${schemeName}.xcframework" || exit 1
 
-    echo "\033[32m 🟢🟢🟢 -> build ${machOType} ${schemeName}.xcframework succeeded. \033[0m" # 绿色
+    echo "\033[32m 🟢🟢🟢 --> build ${machOType} ${schemeName}.xcframework succeeded. \033[0m" # 绿色
 }
 
 function build_frameworks() {
@@ -99,12 +99,12 @@ function build_frameworks() {
         build_framework ${machOType}
     done
 
-    echo "\033[32m 🟢🟢🟢 -> build ${schemeName}.xcframework completed. \033[0m" # 绿色
+    echo "\033[32m 🟢🟢🟢 --> build ${schemeName}.xcframework completed. \033[0m" # 绿色
     echo "\033[42;31m open ${buildout} \033[0m" # 绿色背景，红色字体
     open ${buildout}
 }
 
-ask_macho_with_answers
+ask_macho_with_answers $1;
 echo_params
 pod_install
 build_frameworks

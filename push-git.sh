@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 echo "执行的脚本名：$0"
 
@@ -13,6 +13,12 @@ function git_push() {
     git add .
     git commit -m "${msg}"
     git push
+
+    if [ $? -eq 0 ]; then
+        echo "\033[32m 🟢🟢🟢 --> Push succeeded. \033[0m" # 绿色
+    else
+        echo "\033[31m 🔴🔴🔴 --> Push Failed. \033[0m" # 红色
+    fi
 }
 
-git_push
+git_push $1;
