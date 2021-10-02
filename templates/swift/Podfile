@@ -1,7 +1,8 @@
 source 'https://cdn.cocoapods.org/'
 
 install! 'cocoapods',
-:generate_multiple_pod_projects => true
+  :disable_input_output_paths => true,
+  :generate_multiple_pod_projects => true
 
 platform :ios, '10.0'
 #use_frameworks!
