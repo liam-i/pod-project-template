@@ -5,7 +5,14 @@ echo "执行的脚本名：$0"
 function git_push() {
     msg=$1
 
-    read -p "--> Please enter commit message (or press Enter to skip): " msg;
+    case $1 in
+    r|p)
+        read -p "--> Please enter commit message (or press Enter to skip): " msg;
+        ;;
+    *)
+        ;;
+    esac
+
     if [ -z "$msg" ]; then
         msg="Minor Updates"
     fi
