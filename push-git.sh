@@ -19,7 +19,7 @@ function git_push() {
 
     echo "\033[33m --> entered message: ${msg} \033[0m" # 黄色
 
-    git add .
+    git add -A
     git commit -m "${msg}"
     git push
 
