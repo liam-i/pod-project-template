@@ -3,7 +3,7 @@ pod-template
 
 ## Using this pod-template
 
-`pod lib create <#NAME#> --template-url=https://github.com/liam-i/pod-project-template.git`
+`pod lib create <NAME> --template-url=https://github.com/liam-i/pod-project-template.git`
 
 An opinionated template for creating a Pod with the following features:
 
